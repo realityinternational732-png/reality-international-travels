@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reality International — Travel & Tours</title>
+  <meta name="description" content="Reality International — Best travel packages, easy bookings, and memorable experiences." />
+  <style>
+    /* --- Simple, modern styles --- */
+    :root{--accent:#0ea5a4;--dark:#0f172a;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--dark);line-height:1.5}
+    header{background:linear-gradient(90deg,rgba(14,165,164,0.06),rgba(99,102,241,0.04));padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#6366f1);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:14px;color:var(--dark);text-decoration:none;font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:48px 20px;align-items:center}
+    .hero h1{font-size:34px;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn.ghost{background:transparent;color:var(--dark);border:2px solid rgba(15,23,42,0.06)}
+    .card{background:white;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.06);padding:18px}
+    .search input, .search select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6edf3;margin-bottom:10px}
+    section{padding:36px 20px}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .package{border-radius:12px;overflow:hidden;background:white}
+    .package img{width:100%;height:160px;object-fit:cover;display:block}
+    .package .meta{padding:12px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+    footer{background:#0b1220;color:#cbd5e1;padding:24px 20px;text-align:center}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;}.hero img{display:none}}
+    /* bookings modal */
+    .modal{position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal.show{display:flex}
+    .modal .panel{background:white;border-radius:12px;max-width:920px;width:100%;max-height:80vh;overflow:auto;padding:18px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border-bottom:1px solid #eef2f7;text-align:left}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">RI</div>
+      <div>
+        <div style="font-weight:800">Reality International</div>
+        <div class="small muted">Travel & Tours</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#packages">Packages</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="btn" id="viewBookingsBtn" style="margin-left:12px">View Bookings</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div>
+        <h1>Explore the world with Reality International</h1>
+        <p>Handpicked travel packages, easy booking and 24/7 support. Discover packages for families, couples, and solo travelers.</p>
+        <div class="cta">
+          <a class="btn" href="#packages">View Packages</a>
+          <a class="btn ghost" href="#contact">Book Now</a>
+        </div>
+        <div style="margin-top:18px" class="card">
+          <div style="font-weight:700">Quick Search</div>
+          <div class="search" style="margin-top:12px">
+            <input id="qDestination" placeholder="Enter destination (e.g., Paris)" />
+            <input id="qDate" type="date" />
+            <select id="qType"><option>Family</option><option>Couple</option><option>Solo</option></select>
+            <button class="btn" onclick="document.location='#packages'">Search</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="text-align:center">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop&s=1" alt="hero" style="width:100%;border-radius:10px;max-height:360px;object-fit:cover;">
+        <div style="margin-top:12px"><strong>Featured:</strong> 7‑day Europe Explorer</div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <h2>Popular Packages</h2>
+        <div class="muted small">Affordable prices. Customizable itineraries.</div>
+      </div>
+
+      <div class="grid-3">
+        <!-- package 1 -->
+        <div class="package card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop&s=2" alt="Beach Escape">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><strong>Beach Escape — Maldives</strong><div class="small muted">5 nights • All-inclusive</div></div>
+              <div style="text-align:right">$1,299</div>
+            </div>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button class="btn" onclick="openBooking('Beach Escape — Maldives')">Book</button>
+              <button class="btn ghost" onclick="previewPackage(this)">Quick View</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- package 2 -->
+        <div class="package card">
+          <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1200&auto=format&fit=crop&s=3" alt="City Trip">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><strong>Europe City Highlights</strong><div class="small muted">9 days • Multi-city</div></div>
+              <div style="text-align:right">$1,899</div>
+            </div>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button class="btn" onclick="openBooking('Europe City Highlights')">Book</button>
+              <button class="btn ghost" onclick="previewPackage(this)">Quick View</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- package 3 -->
+        <div class="package card">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&s=4" alt="Adventure">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div><strong>Adventure Trek — Nepal</strong><div class="small muted">8 days • Guided</div></div>
+              <div style="text-align:right">$999</div>
+            </div>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button class="btn" onclick="openBooking('Adventure Trek — Nepal')">Book</button>
+              <button class="btn ghost" onclick="previewPackage(this)">Quick View</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery" style="margin-top:12px">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1000&auto=format&fit=crop&s=5" alt="g1">
+        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1000&auto=format&fit=crop&s=6" alt="g2">
+        <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1000&auto=format&fit=crop&s=7" alt="g3">
+        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1000&auto=format&fit=crop&s=8" alt="g4">
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Reality International</h2>
+      <p class="muted">Reality International is a travel company focused on creating delightful and stress-free travel experiences. We design customizable packages, handle booking & logistics, and offer 24/7 support while you travel.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Book Your Trip</h2>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
+        <form id="bookingForm" class="card" onsubmit="return submitBooking(event)">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <input name="name" required placeholder="Full name" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6edf3;margin-bottom:8px">
+            <input name="email" type="email" required placeholder="Email" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6edf3;margin-bottom:8px">
+            <input name="phone" placeholder="Phone" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6edf3;margin-bottom:8px">
+            <input name="destination" id="destinationInput" placeholder="Destination (e.g., Paris)" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6edf3;margin-bottom:8px">
+            <input name="date" type="date" style="padding:10px;border-radius:8px;border:1px solid #e6edf3;margin-bottom:8px">
+            <textarea name="message" placeholder="Any message / special requirement" style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6edf3;margin-bottom:8px"></textarea>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn" type="submit">Submit Booking</button>
+            <div id="formMsg" class="muted small"></div>
+          </div>
+        </form>
+
+        <div class="card">
+          <h3>Contact & Info</h3>
+          <p class="small muted">Phone: +92 300 0000000<br>Email: info@realityinternational.com</p>
+          <div style="margin-top:12px"><strong>Office</strong><div class="small muted">Lahore, Pakistan</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Reality International — All rights reserved.
+  </footer>
+
+  <!-- bookings modal / dashboard -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3>Bookings Dashboard</h3>
+        <div><button class="btn ghost" onclick="closeModal()">Close</button></div>
+      </div>
+      <div id="bookingsContent"></div>
+    </div>
+  </div>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // helper: save booking to localStorage
+    function submitBooking(e){
+      e.preventDefault();
+      const f = e.target;
+      const data = {
+        id: Date.now(),
+        name: f.name.value.trim(),
+        email: f.email.value.trim(),
+        phone: f.phone.value.trim(),
+        destination: f.destination.value.trim(),
+        date: f.date.value,
+        message: f.message.value.trim()
+      };
+      const arr = JSON.parse(localStorage.getItem('ri_bookings')||'[]');
+      arr.unshift(data);
+      localStorage.setItem('ri_bookings', JSON.stringify(arr));
+      f.reset();
+      document.getElementById('formMsg').textContent = 'Booking submitted — we will contact you soon!';
+      setTimeout(()=>document.getElementById('formMsg').textContent='',3500);
+      return false;
+    }
+
+    // open booking modal prefilling destination
+    function openBooking(title){
+      document.getElementById('destinationInput').value = title;
+      document.location = '#contact';
+      window.scrollTo({top:document.getElementById('contact').offsetTop-20,behavior:'smooth'});
+    }
+
+    // quick preview (simple)
+    function previewPackage(btn){
+      const card = btn.closest('.package');
+      const title = card.querySelector('.meta strong')?.textContent || 'Package';
+      alert(title + "\nCheck booking section to reserve.");
+    }
+
+    // bookings dashboard
+    document.getElementById('viewBookingsBtn').addEventListener('click', ()=>{
+      const secret = prompt('Enter admin password to view bookings');
+      // NOTE: this is client-side only. For production use a real backend.
+      if(secret === 'admin123'){
+        showBookings();
+      } else if(secret !== null){
+        alert('Wrong password');
+      }
+    });
+
+    function showBookings(){
+      const arr = JSON.parse(localStorage.getItem('ri_bookings')||'[]');
+      const container = document.getElementById('bookingsContent');
+      if(arr.length===0){
+        container.innerHTML = '<div class="muted">No bookings yet.</div>';
+      } else {
+        let html = '<table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Destination</th><th>Date</th><th>Message</th><th>Actions</th></tr></thead><tbody>';
+        for(const b of arr){
+          html += `<tr data-id="${b.id}"><td>${escapeHtml(b.name)}</td><td>${escapeHtml(b.email)}</td><td>${escapeHtml(b.phone)}</td><td>${escapeHtml(b.destination)}</td><td>${escapeHtml(b.date)}</td><td>${escapeHtml(b.message)}</td><td><button class='btn ghost' onclick='deleteBooking(${b.id})'>Delete</button></td></tr>`;
+        }
+        html += '</tbody></table>';
+        container.innerHTML = html;
+      }
+      document.getElementById('modal').classList.add('show');
+      document.getElementById('modal').setAttribute('aria-hidden','false');
+    }
+
+    function closeModal(){
+      document.getElementById('modal').classList.remove('show');
+      document.getElementById('modal').setAttribute('aria-hidden','true');
+    }
+
+    function deleteBooking(id){
+      if(!confirm('Delete this booking?')) return;
+      let arr = JSON.parse(localStorage.getItem('ri_bookings')||'[]');
+      arr = arr.filter(x=>x.id!==id);
+      localStorage.setItem('ri_bookings', JSON.stringify(arr));
+      showBookings();
+    }
+
+    function escapeHtml(str){
+      if(!str) return '';
+      return str.replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]});
+    }
+  </script>
+
+  <!--
+    Deployment instructions:
+    1. Save this file as `index.html`.
+    2. Create a GitHub repository named `yourusername.github.io` and upload index.html.
+    3. Visit https://yourusername.github.io to see the site.
+
+    Notes:
+    - Bookings are saved to the visitor's browser localStorage. To collect bookings centrally, you'll need a backend (Google Forms, Firebase, or a server).
+    - Admin password for the built-in dashboard: `admin123` (client-side only).
+  -->
+</body>
+</html>
